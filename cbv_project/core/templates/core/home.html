@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Hello {{var}}</h1>
+	{{my_var}}
+
+
+	{% if latest_articles %}
+		{% for item in latest_articles %}
+			{{item}}
+		{% endfor %}
+	{% endif %}
+</body>
+</html>
