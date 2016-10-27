@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends 'core/base.html' %}
+
+{% block main %}
 	<h1>Hello {{var}}</h1>
 	{{my_var}}
 
+<a href="{% url 'article_create_view' %}" title="">New Article</a>
 
 	{% if latest_articles %}
 		{% for item in latest_articles %}
 			{{item}}
 		{% endfor %}
 	{% endif %}
-</body>
-</html>
+
+{% endblock %}

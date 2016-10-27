@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+
+{% block main %}
+	{% for article in object_list %}
+		<a href="{% url 'article_detail_view' article.id %}">{{article.title }}</a><br>
+	{% endfor %}
+
+	{{now}}
+{% endblock %}
