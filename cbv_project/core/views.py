@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, DeleteView, FormView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from core.models import Article, Coments
@@ -69,3 +70,21 @@ class ArticleCreate(CreateView):
         form.instance.title = form.instance.title + ' Modified '
         self.object = form.save()
         return super(ArticleCreate, self).form_valid(form)
+
+
+class ArticleUpdate(UpdateView):
+    model = Article
+    fields = ['title', 'content', 'slug']
+
+    # Optional
+    def form_valid(self, form):
+        form.instance.title = form.instance.title + ' Updated '
+        self.object = form.save()
+        return super(ArticleUpdate, self).form_valid(form)
+
+
+class ArticleDelete(DeleteView):
+    model = Article
+
+    # This is optional if the get_absolute_url is implemented in the Model
+    success_url = reverse_lazy('article_list_view')
